@@ -12,61 +12,122 @@
     
     <!-- Add your CSS directly in a <style> tag here -->
     <style>
+      /* General body style */
       body {
-        font-family: Arial, sans-serif;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #ffe6f2; /* Light pink background */
+        background-color: #f9f0ff; /* Soft purple background */
+        color: #333;
       }
 
+      /* Navigation bar */
       nav {
-        background: #ff66b2; /* Dark pink color for nav */
+        background: #6a0dad; /* Deep purple */
         color: white;
-        padding: 10px;
+        padding: 15px;
         text-align: center;
+        border-bottom: 4px solid #d4b0ff; /* Light purple border for contrast */
       }
 
-      h1, h2 {
+      nav h1 {
         margin: 0;
-        padding: 10px;
+        font-size: 24px;
+        font-weight: 600;
       }
 
+      /* List items */
       ul {
         list-style-type: none;
         padding: 0;
+        max-width: 600px;
+        margin: 30px auto;
       }
 
       li {
-        background: #ffd1e8; /* Light pink for list items */
-        margin: 10px;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background: #d4b0ff; /* Light purple */
+        color: #4a007d; /* Dark purple for text */
+        margin: 10px 0;
+        padding: 15px;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-size: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transition: transform 0.2s ease-in-out;
       }
 
+      li:hover {
+        transform: scale(1.02); /* Subtle hover effect */
+      }
+
+      /* Footer */
       footer {
-        background: #ff66b2; /* Dark pink for footer */
+        background: #6a0dad; /* Deep purple */
         color: white;
         text-align: center;
-        padding: 10px;
-        position: absolute;
+        padding: 15px;
+        position: fixed;
         width: 100%;
         bottom: 0;
+        border-top: 4px solid #d4b0ff; /* Light purple border */
+      }
+
+      footer p {
+        margin: 0;
+        font-size: 16px;
+      }
+
+      /* Responsive design for mobile screens */
+      @media (max-width: 600px) {
+        nav h1 {
+          font-size: 20px;
+        }
+
+        li {
+          font-size: 16px;
+        }
+
+        footer p {
+          font-size: 14px;
+        }
       }
     </style>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+    
+    <!-- Navigation bar -->
     <nav>
-      <h1>My Task Manager</h1>
+      <h1>Task Manager</h1>
     </nav>
+
+    <!-- Task list -->
     <ul>
-      <li>Task 1</li>
-      <li>Task 2</li>
-      <li>Task 3</li>
-      <li>Task 4</li>
-      <li>Task 5</li>
+      <li>
+        <span>Task 1</span>
+        <span>&#10003;</span>
+      </li>
+      <li>
+        <span>Task 2</span>
+        <span>&#10003;</span>
+      </li>
+      <li>
+        <span>Task 3</span>
+        <span>&#10003;</span>
+      </li>
+      <li>
+        <span>Task 4</span>
+        <span>&#10003;</span>
+      </li>
+      <li>
+        <span>Task 5</span>
+        <span>&#10003;</span>
+      </li>
     </ul>
+
+    <!-- Footer -->
     <footer>
       <p>Task Manager &copy; 2024</p>
     </footer>
