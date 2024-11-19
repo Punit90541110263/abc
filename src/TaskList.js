@@ -1,16 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import TaskItem from './TaskItem';
 
 const TaskList = () => {
+  const [tasks, setTasks] = useState([
+    { id: 1, name: 'Task 1', priority: 'High', completed: false },
+    { id: 2, name: 'Task 2', priority: 'Medium', completed: true },
+    { id: 3, name: 'Task 3', priority: 'Low', completed: false },
+  ]);
+
+  const toggleCompletion = (id) => {
+    setTasks((prevTasks) =>
+      prevTasks.map((task) =>
+        task.id === id ? { ...task, completed: !task.completed } : task
+      )
+    );
+  };
+
   return (
     <div>
       <h2>Your Tasks</h2>
       <ul>
-        <TaskItem task="Task 1" />
-        <TaskItem task="Task 2" />
-        <TaskItem task="Task 3" />
-        <TaskItem task="Task 4" />
-        <TaskItem task="Task 5" />
+        {tasks.map((task) => (
+          <TaskItem
+            key={task.id}
+            task={task}
+            toggleCompletion={toggleCompletion}
+          />
+        ))}
       </ul>
     </div>
   );
