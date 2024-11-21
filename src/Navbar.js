@@ -1,9 +1,15 @@
+// src/Navbar.js
 import React from 'react';
+import { Link } from 'react-router-dom'; // Import Link for navigation
 
 const Navbar = () => {
   return (
-    <nav style={{ padding: '10px', background: '#282c34', color: 'white' }}>
-      <h1>Task Manager</h1>
+    <nav>
+      <ul>
+        <li><Link to="/">Add Task</Link></li>
+        <li><Link to="/tasks">Task List</Link></li>
+        <li><Link to="/users">User List</Link></li> {/* Link to users */}
+      </ul>
     </nav>
   );
 };

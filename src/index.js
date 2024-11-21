@@ -1,15 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import './index.css'; // Import your custom styles
+import App from './App'; // Import your main App component
+import reportWebVitals from './reportWebVitals'; // For performance tracking
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>
-);
+// Get the root element where React will render the App component
+const rootElement = document.getElementById('root');
+
+// Check if the root element exists
+if (rootElement) {
+  const root = ReactDOM.createRoot(rootElement); // Create the root for React 18
+  root.render(
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>
+  );
+} else {
+  console.error('Root element not found in the HTML!');
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

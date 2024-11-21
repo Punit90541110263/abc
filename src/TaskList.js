@@ -1,33 +1,45 @@
-import React, { useState } from 'react';
-import TaskItem from './TaskItem';
+import React, { useEffect, useState } from "react";
+import { getTasks, updateTask, deleteTask } from "./firestoreService";
 
 const TaskList = () => {
-  const [tasks, setTasks] = useState([
-    { id: 1, name: 'Task 1', priority: 'High', completed: false },
-    { id: 2, name: 'Task 2', priority: 'Medium', completed: true },
-    { id: 3, name: 'Task 3', priority: 'Low', completed: false },
-  ]);
+  const [tasks, setTasks] = useState([]);
 
-  const toggleCompletion = (id) => {
-    setTasks((prevTasks) =>
-      prevTasks.map((task) =>
-        task.id === id ? { ...task, completed: !task.completed } : task
-      )
-    );
+  useEffect(() => {
+    const fetchTasks = async () => {
+      const fetchedTasks = await getTasks();
+      setTasks(fetchedTasks);
+    };
+    fetchTasks();
+  }, []);
+
+  const handleToggleComplete = async (id, completed) => {
+    await updateTask(id, { completed: !completed });
+    window.location.reload();
+  };
+
+  const handleDelete = async (id) => {
+    await deleteTask(id);
+    window.location.reload();
   };
 
   return (
     <div>
-      <h2>Your Tasks</h2>
-      <ul>
-        {tasks.map((task) => (
-          <TaskItem
-            key={task.id}
-            task={task}
-            toggleCompletion={toggleCompletion}
-          />
-        ))}
-      </ul>
+      <h2>Task List</h2>
+      {tasks.map((task) => (
+        <div key={task.id} style={{ marginBottom: "10px" }}>
+          <span
+            style={{
+              textDecoration: task.completed ? "line-through" : "none",
+            }}
+          >
+            {task.name}
+          </span>
+          <button onClick={() => handleToggleComplete(task.id, task.completed)}>
+            {task.completed ? "Undo" : "Complete"}
+          </button>
+          <button onClick={() => handleDelete(task.id)}>Delete</button>
+        </div>
+      ))}
     </div>
   );
 };

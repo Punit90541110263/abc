@@ -1,9 +1,10 @@
+// src/Footer.js
 import React from 'react';
 
 const Footer = () => {
   return (
-    <footer style={{ padding: '10px', background: '#282c34', color: 'white' }}>
-      <p>Footer Content</p>
+    <footer>
+      <p>Task Manager © 2024</p>
     </footer>
   );
 };
